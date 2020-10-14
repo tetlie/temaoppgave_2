@@ -15,6 +15,11 @@
     font-size: 2rem;
   }
 
+  #products-section-title {
+    min-height: 30vh;
+    font-size: 5rem;
+  }
+
   a {
     text-decoration: none;
     color: blue;
@@ -33,6 +38,11 @@
     padding: 0.5rem;
   }
 
+  #cart-button, .buy-button, .remove-button {
+  cursor: pointer;
+  }
+
+
 #banner-section {
     padding: 0.5rem;
     display: flex;
@@ -43,10 +53,11 @@
 }
 
 #cart-section {
+
   width: 100%;
   padding: 0.5rem;
-    justify-content: left;
-    align-items: center;
+  justify-content: left;
+  align-items: center;
     min-height: 30vh;
     background-color: #CCE3FF;
 }
@@ -70,6 +81,12 @@
     align-items: center;
     min-height: 30vh;
     width: 100%;
+}
+
+#products-header {
+  font-size: inherit;
+  padding: 2rem;
+
 }
 
 #products-article {

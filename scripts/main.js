@@ -19,33 +19,45 @@ PRODUCTCOLLECTION.forEach(el => {
 
 //——————————————————————————————————————— FILTER
 
+
 PRODUCTCOLLECTION.forEach(el => {
-    if (el.Origin !== el.Origin) {
+    //if (el.Origin !== el.Origin) {
         document.querySelector("#products-filter-origin").innerHTML += `<a href="">${el.Origin}</a>`
-    }
-    if (el.Brew !== el.Brew) {
+    //}
+    //if (el.Brew !== el.Brew) {
         document.querySelector("#products-filter-brew").innerHTML += `<a href="">${el.Brew}</a>`
-    }
-    if (el.Roast !== el.Roast) {
+    //}
+    //if (el.Roast !== el.Roast) {
         document.querySelector("#products-filter-roast").innerHTML += `<a href="">${el.Roast}</a>`
-    }
+    //}
 });
+
 
 //——————————————————————————————————————— ADD TO CART
 
+// Handlekurv-array
 let CART_COLLECTION = [];
 
+// Handlekurv-section
+let cartSection = document.querySelector("#cart-section");
+
+// legg til eventListener(click) for alle knapper med classe .buy-button
 document.querySelectorAll(".buy-button").forEach(el => el.addEventListener('click', addToCart));
 
+// legg til i handlekurv
 function addToCart(e) {
+    cartSection.innerHTML = "";
     PRODUCTCOLLECTION.forEach(el => {
+        // if knappens id er samme som elementets id
+        // legg til elementet i handlekurv-arrayet
         if (e.target.id === el.Id) {
-            console.log(el.Id)
             CART_COLLECTION.push(el)
         }
     });
+
     CART_COLLECTION.forEach(el => {
-        document.querySelector("#cart-section").innerHTML += `
+        // For hvert av elementene i handlekurv-arrayet opprettes en div i handlekuv-sek
+        cartSection.innerHTML += `
         <div id="product-line"><p>${el.Name}
         <p>NOK ${el.Price}<p>
         <button id="${el.Id}" class="remove-button" type="">Remove</button></div>`;
@@ -62,12 +74,11 @@ function removeFromCart(e) {
             CART_COLLECTION.splice(i,1)
         }
     });
-    console.log(CART_COLLECTION);
+    // console.log(CART_COLLECTION);
 }
 
 //———————————————————————————————————————
 
-/*
 // show-hide cart-section
 const CART_BUTTON = document.querySelector("#cart-button");
 const CART_SECTION = document.querySelector("#cart-section");
@@ -82,4 +93,3 @@ function showCart() {
 }
 
 CART_BUTTON.addEventListener("click", showCart);
-*/
