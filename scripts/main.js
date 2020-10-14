@@ -81,14 +81,15 @@ function removeFromCart(e) {
 
 // show-hide cart-section
 const CART_BUTTON = document.querySelector("#cart-button");
-const CART_SECTION = document.querySelector("#cart-section");
+
 
 // boleean
 function showCart() {
+    const CART_SECTION = document.querySelector("#cart-section");
     if (CART_SECTION.style.display === "none") {
-        CART_SECTION.style.display === "block";
+        CART_SECTION.style.display = "block";
     } else {
-        CART_SECTION.style.display === "none";
+        CART_SECTION.style.display = "none";
     }
 }
 

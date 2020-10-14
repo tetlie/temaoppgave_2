@@ -53,13 +53,15 @@
 }
 
 #cart-section {
-
+  display: none;
+  height: 0vh;
   width: 100%;
   padding: 0.5rem;
   justify-content: left;
   align-items: center;
-    min-height: 30vh;
-    background-color: #CCE3FF;
+  min-height: 30vh;
+  background-color: #CCE3FF;
+  transition: 1s;
 }
 
 #cart-article {
