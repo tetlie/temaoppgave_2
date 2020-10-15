@@ -22,7 +22,7 @@
 
   a {
     text-decoration: none;
-    color: blue;
+    color: black;
   }
 
 #announcement {
@@ -45,6 +45,10 @@
   border-radius: 0.5rem;
   border: none;
   padding: 1rem;
+  }
+
+  .buy-button {
+    justify-self: flex-end;
   }
 
 #cart-section {
@@ -72,10 +76,6 @@
 
 }
 
-#product-line{
-}
-
-
 #total-line {
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -87,8 +87,11 @@
   display: flex;
   justify-content: left;
   align-items: center;
-  min-height: 30vh;
+  min-height: 50vh;
   background-color: lightgray;
+  background-image: url(./img/cup2.jpg);
+  background-size: cover;
+
 }
 
 
@@ -108,30 +111,51 @@
 }
 
 #products-header {
-  font-size: inherit;
-  padding: 2rem;
 
+  padding: 2rem;
 }
+
+
 
 #products-article {
     flex-direction: column;
     justify-content: left;
     align-items: center;
     min-height: 30vh;
+}
 
+#filter-header {
+  cursor: pointer;
+}
+
+.filter-item {
+  cursor: pointer;
+   border-top: black 1px solid;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-self: center;
 }
 
 #products-article-filter {
-    background-color:lightgray;
-    padding: 2rem;
+  display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: minmax(100px);
-    grid-gap: 2rem;
 }
 
-#products-filter-origin, #products-filter-brew, #products-filter-roast {
+#filter {
+  display: none;
+  padding: 2rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: minmax(100px);
+  grid-gap: 2rem;
+}
+
+#products-filter-origin, #products-filter-brew, #products-filter-roast, #products-filter-notes {
   display: flex;
   flex-direction: column;
   gap: 1rem;
