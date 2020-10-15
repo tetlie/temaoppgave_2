@@ -61,99 +61,124 @@ function filterProducts(e) {
 */
 
 
-    //——————————————————————————————————————— ADD TO CART
+//——————————————————————————————————————— ADD TO CART
 
-    // Handlekurv-array
-    let CART_COLLECTION = [];
+// Handlekurv-array
+let CART_COLLECTION = [];
 
-    // Handlekurv-section
-    let cartArticle = document.querySelector("#cart-article");
+// Handlekurv-section
+let cartArticle = document.querySelector("#cart-article");
+let cartNumberOfItems = document.querySelector("#number-of-items")
 
-    // legg til eventListener(click) for alle knapper med classe .buy-button
-    document.querySelectorAll(".buy-button").forEach(el => el.addEventListener('click', addToCart));
+// legg til eventListener(click) for alle knapper med classe .buy-button
+document.querySelectorAll(".buy-button").forEach(el => el.addEventListener('click', addToCart));
 
-    // legg til i handlekurv
-    function addToCart(e) {
-        cartArticle.innerHTML = "";
-        PRODUCTCOLLECTION.forEach(el => {
-            // if knappens id er samme som elementets id
-            // legg til elementet i handlekurv-arrayet
-            if (e.target.id === el.Id) {
-                CART_COLLECTION.push(el)
-            }
-        });
+// legg til i handlekurv
+function addToCart(e) {
+    // refresh visning av aray
+    cartArticle.innerHTML = "";
+    // refresh antall produkter i header
+    cartNumberOfItems.innerHTML = "";
 
-        // legg til produktlinjene
-        CART_COLLECTION.forEach(el => {
-            // For hvert av elementene i handlekurv-arrayet opprettes en div i handlekuv-sek
-            cartArticle.innerHTML += `
+    PRODUCTCOLLECTION.forEach(el => {
+        // if knappens id er samme som elementets id
+        // legg til elementet i handlekurv-arrayet
+        if (e.target.id === el.Id) {
+            CART_COLLECTION.push(el)
+        }
+    });
+
+    // legg til produktlinjene
+    CART_COLLECTION.forEach(el => {
+        // For hvert av elementene i handlekurv-arrayet opprettes en div i handlekuv-sek
+        cartArticle.innerHTML += `
         <div id="product-line"><p>${el.Name}
-        <p>NOK ${el.Price}<p>
+        <p>${el.Price} NOK<p>
         <button id="${el.Id}" class="remove-button" type="">Remove</button></div>`;
-        });
+    });
+
+    // oppdater antall produkter i header
+    cartNumberOfItems.innerHTML = `(${CART_COLLECTION.length})`;
+
+
+    // oppdater antall produkter i handlekurv og juster grammatikk etter antall (product/products)
+    if (CART_COLLECTION.length === 1) {
+        document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} product`;
+    } else {
+        document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} products`;
     }
 
-    // CART_COLLECTION.forEach(el => {
-    //     let sum = 0;
-    //     sum += el.Price;
-    //     console.log(sum);
-    //     document.querySelector("#total-sum") += `NOK ${sum}`;
-    // });
+    // oppdater totalpris
 
-    // let prices = CART_COLLECTION.reduce(el => el.Price);
-    // console.log(prices)
+    let totalPrice = 0;
 
+    CART_COLLECTION.forEach(el => {
+        totalPrice += el.Price;
+        document.querySelector("#total-sum").innerHTML = `${totalPrice} NOK`;
+    })
+}
 
-    // let totalSum = CART_COLLECTION.reduce(function(result, item) {
-    //     return result + item.Price
-    //     }, 0);
+// CART_COLLECTION.forEach(el => {
+//     let sum = 0;
+//     sum += el.Price;
+//     console.log(sum);
+//     document.querySelector("#total-sum") += `NOK ${sum}`;
+// });
 
-
-    // console.log(totalSum);
-
-
-    // ——————————————————————————————————————— REMOVE FROM CART
-
-    document.querySelectorAll(".remove-button").forEach(el => el.addEventListener('click', removeFromCart));
-
-    function removeFromCart(e) {
-        CART_COLLECTION.forEach((el, i) => {
-            if (e.target.id === el.Id) {
-                CART_COLLECTION.splice(i, 1)
-            }
-        });
-        // console.log(CART_COLLECTION);
-    }
-
-    //———————————————————————————————————————
-
-    // show-hide cart-section
-    const CART_BUTTON = document.querySelector("#cart-button");
+// let prices = CART_COLLECTION.reduce(el => el.Price);
+// console.log(prices)
 
 
-    // boleean
-    function showCart() {
-        const CART_SECTION = document.querySelector("#cart-section");
-        if (CART_SECTION.style.display === "none") {
-            CART_SECTION.style.display = "block";
-        } else {
-            CART_SECTION.style.display = "none";
+// let totalSum = CART_COLLECTION.reduce(function(result, item) {
+//     return result + item.Price
+//     }, 0);
+
+
+// console.log(totalSum);
+
+
+// ——————————————————————————————————————— REMOVE FROM CART
+
+document.querySelectorAll(".remove-button").forEach(el => el.addEventListener('click', removeFromCart));
+
+function removeFromCart(e) {
+    CART_COLLECTION.forEach((el, i) => {
+        if (e.target.id === el.Id) {
+            CART_COLLECTION.splice(i, 1)
         }
+    });
+    // console.log(CART_COLLECTION);
+}
+
+//———————————————————————————————————————
+
+// show-hide cart-section
+const CART_BUTTON = document.querySelector("#cart-button");
+
+
+// boleean
+function showCart() {
+    const CART_SECTION = document.querySelector("#cart-section");
+    if (CART_SECTION.style.display === "none") {
+        CART_SECTION.style.display = "block";
+    } else {
+        CART_SECTION.style.display = "none";
     }
+}
 
-    CART_BUTTON.addEventListener("click", showCart);
+CART_BUTTON.addEventListener("click", showCart);
 
 
-    // ————————————
+// ————————————
 
-    const FILTER_BUTTON = document.querySelector("#filter-header");
+const FILTER_BUTTON = document.querySelector("#filter-header");
 
-    function showFilter() {
-        const FILTER_SECTION = document.querySelector("#filter");
-        if (FILTER_SECTION.style.display === "none") {
-            FILTER_SECTION.style.display = "block";
-        } else {
-            FILTER_SECTION.style.display = "none";
-        }
+function showFilter() {
+    const FILTER_SECTION = document.querySelector("#filter");
+    if (FILTER_SECTION.style.display === "none") {
+        FILTER_SECTION.style.display = "block";
+    } else {
+        FILTER_SECTION.style.display = "none";
     }
-    FILTER_BUTTON.addEventListener("click", showFilter);
+}
+FILTER_BUTTON.addEventListener("click", showFilter);

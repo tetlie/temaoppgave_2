@@ -32,13 +32,19 @@
     justify-content: center;
   }
 
+  header {
+    background-color: white;
+    width: 100%;
+  }
+
   #header {
     display: flex;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   button {
+  font-size: 1.5rem;
   cursor: pointer;
   color: white;
   background-color: black;
@@ -89,8 +95,8 @@
   align-items: center;
   min-height: 50vh;
   background-color: lightgray;
-  background-image: url(./img/cup2.jpg);
-  background-size: cover;
+  background-image: url(./img/cup5.png);
+  background-size: contain;
 
 }
 

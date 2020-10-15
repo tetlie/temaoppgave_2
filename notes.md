@@ -16,3 +16,22 @@ if button.id.value === array.object.id
 == skriv iut
 
 .find => if button.id.value === array.object.id
+
+
+Når "checkout" submittes
+kopier array CART-array inn i nytt array
+export array
+importer array på en ny side
+denn siden skal kun være en checkout
+her kan hvert av elementene få nye unike id-er og fjern-knapper
+
+
+// issues
+
+// filter – skal helst bare vises en gang
+
+// filter — skal 
+
+// filter — funksjon, nye arrays eller find? må hele produktgriden oppdateres?
+
+// fjerne produkter fra handlekurv
