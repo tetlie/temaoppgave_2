@@ -28,10 +28,15 @@ her kan hvert av elementene få nye unike id-er og fjern-knapper
 
 // issues
 
-// filter – skal helst bare vises en gang
+// filter – arrayene inneholder items som vokser?
 
 // filter — skal 
 
 // filter — funksjon, nye arrays eller find? må hele produktgriden oppdateres?
 
 // fjerne produkter fra handlekurv
+
+
+// hent ut filter-elementer
+// lag nye array
+// find (el = el) og splice el[i,1]

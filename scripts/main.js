@@ -21,45 +21,75 @@ PRODUCTCOLLECTION.forEach(el => {
 
 //——————————————————————————————————————— FILTER
 
-PRODUCTCOLLECTION.forEach(el => {
-    //if (el.Origin !== el.Origin) {
-    document.querySelector("#products-filter-origin").innerHTML += `<p class="filter-item">${el.Origin}</p>`
-    //}
+let originAll = [];
+let filteredOrigin = [];
+PRODUCTCOLLECTION.filter(el => {
 
-    if (el.Brew.Brew1 !== undefined) {
-        document.querySelector("#products-filter-brew").innerHTML += `<p class="filter-item">${el.Brew.Brew1}</p>`
-    }
-    if (el.Brew.Brew2 !== undefined) {
-        document.querySelector("#products-filter-brew").innerHTML += `<p class="filter-item">${el.Brew.Brew2}</p>`
-    }
-    if (el.Brew.Brew3 !== undefined) {
-        document.querySelector("#products-filter-brew").innerHTML += `<p class="filter-item">${el.Brew.Brew3}</p>`
-    }
-    if (el.Brew.Brew4 !== undefined) {
-        document.querySelector("#products-filter-brew").innerHTML += `<p class="filter-item">${el.Brew.Brew4}</p>`
-    }
+    originAll.push(el.Origin);
+    filteredOrigin = originAll.filter((el, i, ar) => ar.indexOf(el) === i);
 
-    document.querySelector("#products-filter-roast").innerHTML += `<p class="filter-item">${el.Roast}</p>`
+    console.log(filteredOrigin);
 
-    document.querySelector("#products-filter-notes").innerHTML += `<p class="filter-item">${el.Notes.Note1}</p>`
-    document.querySelector("#products-filter-notes").innerHTML += `<p class="filter-item">${el.Notes.Note2}</p>`
-    document.querySelector("#products-filter-notes").innerHTML += `<p class="filter-item">${el.Notes.Note3}</p>`
+    filteredOrigin.forEach(el => {
+        document.querySelector("#products-filter-origin").innerHTML += `<p class="filter-item">${el}</p>`
+    });
 });
 
-//——————————————————————————————————————— filtrering
+let brewAll = [];
+let filteredBrew = [];
+PRODUCTCOLLECTION.filter(el => {
+    if (el.Brew.Brew1 !== undefined) {brewAll.push(el.Brew.Brew1);};
+    if (el.Brew.Brew2 !== undefined) {brewAll.push(el.Brew.Brew2);};
+    if (el.Brew.Brew3 !== undefined) {brewAll.push(el.Brew.Brew3);};
+    if (el.Brew.Brew4 !== undefined) {brewAll.push(el.Brew.Brew4);};
+    filteredBrew = brewAll.filter((el, i, ar) => ar.indexOf(el) === i);
 
-/*
-document.querySelectorAll(".filter-item").forEach(el => el.addEventListener('click', filterProducts));
+    console.log(filteredBrew);
+
+    filteredBrew.forEach(el => {
+        document.querySelector("#products-filter-brew").innerHTML += `<p class="filter-item">${el}</p>`
+    });
+});
+
+let roastAll = [];
+let filteredRoast = [];
+PRODUCTCOLLECTION.filter(el => {
+    roastAll.push(el.Roast);
+    filteredRoast = roastAll.filter((el, i, ar) => ar.indexOf(el) === i);
+
+    console.log(filteredRoast);
+
+    filteredRoast.forEach(el => {
+        document.querySelector("#products-filter-roast").innerHTML += `<p class="filter-item">${el}</p>`
+    });
+});
+
+let notesAll = [];
+let filteredNotes = [];
+PRODUCTCOLLECTION.filter(el => {
+    notesAll.push(el.Notes.Note1);
+    notesAll.push(el.Notes.Note2);
+    notesAll.push(el.Notes.Note3);
+    filteredNotes = notesAll.filter((el, i, ar) => ar.indexOf(el) === i);
+
+    console.log(filteredNotes);
+
+    filteredNotes.forEach(el => {
+        document.querySelector("#products-filter-notes").innerHTML += `<p class="filter-item">${el}</p>`
+    });
+});
+
+//——————————————————————————————————————— klikke på filteret
+
+document.querySelectorAll(".filter-button").forEach(el => el.addEventListener('click', filterProducts));
 let FILTERED_COLLECTION = [];
-
 function filterProducts(e) {
     PRODUCTCOLLECTION.forEach(el => {
-        if (e.target.Origin === el.Origin) {
+        if (e.innerHTML === el.Origin) {
             FILTERED_COLLECTION.push(el);
         }
     });
-*/
-
+}
 
 //——————————————————————————————————————— ADD TO CART
 
