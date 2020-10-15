@@ -1,8 +1,6 @@
 import { PRODUCTCOLLECTION } from "./products.js";
 
-
-
-//——————————————————————————————————————— PRODUCT GRID
+//——————————————————————————————————————— LEGG ARRAY-ELEMENTER I PRODUCT-GRID
 
 PRODUCTCOLLECTION.forEach(el => {
     document.querySelector("#products-article-grid").innerHTML += `
@@ -24,46 +22,36 @@ PRODUCTCOLLECTION.forEach(el => {
 let originAll = [];
 let filteredOrigin = [];
 PRODUCTCOLLECTION.filter(el => {
-
     originAll.push(el.Origin);
     filteredOrigin = originAll.filter((el, i, ar) => ar.indexOf(el) === i);
-
-    console.log(filteredOrigin);
-
-    filteredOrigin.forEach(el => {
-        document.querySelector("#products-filter-origin").innerHTML += `<p class="filter-item">${el}</p>`
-    });
 });
-
+filteredOrigin.forEach(el => {
+    document.querySelector("#products-filter-origin").innerHTML += `<p class="filter-item">${el}</p>`
+});
+//———————————————————————————————————————
 let brewAll = [];
 let filteredBrew = [];
 PRODUCTCOLLECTION.filter(el => {
-    if (el.Brew.Brew1 !== undefined) {brewAll.push(el.Brew.Brew1);};
-    if (el.Brew.Brew2 !== undefined) {brewAll.push(el.Brew.Brew2);};
-    if (el.Brew.Brew3 !== undefined) {brewAll.push(el.Brew.Brew3);};
-    if (el.Brew.Brew4 !== undefined) {brewAll.push(el.Brew.Brew4);};
+    if (el.Brew.Brew1 !== undefined) { brewAll.push(el.Brew.Brew1); };
+    if (el.Brew.Brew2 !== undefined) { brewAll.push(el.Brew.Brew2); };
+    if (el.Brew.Brew3 !== undefined) { brewAll.push(el.Brew.Brew3); };
+    if (el.Brew.Brew4 !== undefined) { brewAll.push(el.Brew.Brew4); };
     filteredBrew = brewAll.filter((el, i, ar) => ar.indexOf(el) === i);
-
-    console.log(filteredBrew);
-
-    filteredBrew.forEach(el => {
-        document.querySelector("#products-filter-brew").innerHTML += `<p class="filter-item">${el}</p>`
-    });
 });
-
+filteredBrew.forEach(el => {
+    document.querySelector("#products-filter-brew").innerHTML += `<p class="filter-item">${el}</p>`
+});
+//———————————————————————————————————————
 let roastAll = [];
 let filteredRoast = [];
 PRODUCTCOLLECTION.filter(el => {
     roastAll.push(el.Roast);
     filteredRoast = roastAll.filter((el, i, ar) => ar.indexOf(el) === i);
-
-    console.log(filteredRoast);
-
-    filteredRoast.forEach(el => {
-        document.querySelector("#products-filter-roast").innerHTML += `<p class="filter-item">${el}</p>`
-    });
 });
-
+filteredRoast.forEach(el => {
+    document.querySelector("#products-filter-roast").innerHTML += `<p class="filter-item">${el}</p>`
+});
+//———————————————————————————————————————
 let notesAll = [];
 let filteredNotes = [];
 PRODUCTCOLLECTION.filter(el => {
@@ -71,18 +59,17 @@ PRODUCTCOLLECTION.filter(el => {
     notesAll.push(el.Notes.Note2);
     notesAll.push(el.Notes.Note3);
     filteredNotes = notesAll.filter((el, i, ar) => ar.indexOf(el) === i);
-
-    console.log(filteredNotes);
-
-    filteredNotes.forEach(el => {
-        document.querySelector("#products-filter-notes").innerHTML += `<p class="filter-item">${el}</p>`
-    });
+});
+filteredNotes.forEach(el => {
+    document.querySelector("#products-filter-notes").innerHTML += `<p class="filter-item">${el}</p>`
 });
 
 //——————————————————————————————————————— klikke på filteret
 
 document.querySelectorAll(".filter-button").forEach(el => el.addEventListener('click', filterProducts));
+
 let FILTERED_COLLECTION = [];
+
 function filterProducts(e) {
     PRODUCTCOLLECTION.forEach(el => {
         if (e.innerHTML === el.Origin) {
@@ -124,7 +111,13 @@ function addToCart(e) {
         cartArticle.innerHTML += `
         <div id="product-line"><p>${el.Name}
         <p>${el.Price} NOK<p>
-        <button id="${el.Id}" class="remove-button" type="">Remove</button></div>`;
+        <button id="remove-${el.Id}" class="remove_button" type="">Remove</button></div>`;
+
+        document.querySelectorAll(".remove_button").forEach(el => {
+            console.log(el);
+            el.addEventListener('click', removeFromCart)
+        });
+
     });
 
     // oppdater antall produkter i header
@@ -141,43 +134,53 @@ function addToCart(e) {
     // oppdater totalpris
 
     let totalPrice = 0;
-
     CART_COLLECTION.forEach(el => {
         totalPrice += el.Price;
         document.querySelector("#total-sum").innerHTML = `${totalPrice} NOK`;
     })
 }
 
-// CART_COLLECTION.forEach(el => {
-//     let sum = 0;
-//     sum += el.Price;
-//     console.log(sum);
-//     document.querySelector("#total-sum") += `NOK ${sum}`;
-// });
-
-// let prices = CART_COLLECTION.reduce(el => el.Price);
-// console.log(prices)
-
-
-// let totalSum = CART_COLLECTION.reduce(function(result, item) {
-//     return result + item.Price
-//     }, 0);
-
-
-// console.log(totalSum);
-
-
 // ——————————————————————————————————————— REMOVE FROM CART
 
-document.querySelectorAll(".remove-button").forEach(el => el.addEventListener('click', removeFromCart));
+
 
 function removeFromCart(e) {
+    cartArticle.innerHTML = "";
+    document.querySelector("#total-sum").innerHTML = "";
+    document.querySelector("#total-product").innerHTML = "";
     CART_COLLECTION.forEach((el, i) => {
-        if (e.target.id === el.Id) {
-            CART_COLLECTION.splice(i, 1)
+        if (e.target.id === `remove-${el.Id}`) {
+            CART_COLLECTION.splice(i, 1);
+            console.log(CART_COLLECTION);
         }
+
+        
+        console.log(CART_COLLECTION);
+        cartArticle.innerHTML += `
+        <div id="product-line"><p>${el.Name}
+        <p>${el.Price} NOK<p>
+        <button id="remove-${el.Id}" class="remove_button" type="">Remove</button></div>`;
+
+        document.querySelectorAll(".remove_button").forEach(el => {
+            console.log(el);
+            el.addEventListener('click', removeFromCart)
+        });
+
+        cartNumberOfItems.innerHTML = `(${CART_COLLECTION.length})`;
+        if (CART_COLLECTION.length === 1) {
+            document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} product`;
+        } else {
+            document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} products`;
+        }
+
+        let totalPrice = 0;
+        CART_COLLECTION.forEach(el => {
+            totalPrice += el.Price;
+            document.querySelector("#total-sum").innerHTML = `${totalPrice} NOK`;
+        })
+
     });
-    // console.log(CART_COLLECTION);
+
 }
 
 //———————————————————————————————————————

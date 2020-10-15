@@ -45,6 +45,11 @@ header {
   justify-content: center;
   height: 4vh;
   width: 4vw;
+  transition: 0.5s;
+}
+
+.logo:hover {
+  transform: scale(1.1);
 }
 
 #header {
@@ -62,6 +67,15 @@ button {
   border-radius: 0.5rem;
   border: none;
   padding: 1rem;
+  transition: 0.5s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.9);
 }
 
 .buy-button {
@@ -99,6 +113,7 @@ button {
   margin-top: 2rem;
   margin-bottom: 2rem;
   font-weight: 900;
+  transition: 0.5s;
 }
 
 #banner-section {
@@ -149,6 +164,11 @@ button {
   flex-direction: row;
   align-items: center;
   justify-self: center;
+  transition: 0.5s;
+}
+
+.filter-item:hover {
+  transform: scale(1.05);
 }
 
 #products-article-filter {
@@ -185,6 +205,7 @@ button {
   grid-gap: 2rem;
 }
 
+
 #product-item {
   font-size: 1.5rem;
   display: flex;
@@ -192,6 +213,11 @@ button {
   flex-direction: column;
   padding: 2rem;
   background-color: #CCE3FF;
+  transition: 0.5s;
+}
+
+#product-item:hover {
+  transform: scale(1.02);
 }
 
 #product-item img {

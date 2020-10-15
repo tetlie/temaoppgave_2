@@ -22,3 +22,5 @@ her kan hvert av elementene få nye unike id-er og fjern-knapper
 // hent ut filter-elementer
 // lag nye array
 // find (el = el) og splice el[i,1]
+
+// lage funksjoner som kan brukes igjen
