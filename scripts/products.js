@@ -3,7 +3,7 @@ const PRODUCTCOLLECTION = [
     {
         Id: "coffee1",
         Name: "Olhos D’Agua",
-        Image: "./img/bag.jpg",
+        Image: "./img/coffee1.png",
         Origin: "Brazil",
         Price: 99,
         Descritpion: "Typically sweet Brazilian notes of chocolate and toffee are contrasted with a fresh note of black cherry.",
@@ -14,7 +14,7 @@ const PRODUCTCOLLECTION = [
     {
         Id: "coffee2",
         Name: "Los Pirineos",
-        Image: "./img/bag.jpg",
+        Image: "./img/coffee2.png",
         Origin: "El Salvador",
         Price: 149,
         Descritpion: "The Carbonic Maceration process creates fresh fruit complexity with soft melon and strawberry notes punctuated by fresh tangerine.",
@@ -25,7 +25,7 @@ const PRODUCTCOLLECTION = [
     {
         Id: "coffee3",
         Name: "Mukurweini",
-        Image: "./img/bag.jpg",
+        Image: "./img/coffee3.png",
         Origin: "Kenya",
         Price: 139,
         Descritpion: "A rather delicate Kenyan experience, with ripe raspberry joined by notes of black tea and lemon.",
@@ -36,7 +36,7 @@ const PRODUCTCOLLECTION = [
     {
         Id: "coffee4",
         Name: "Gatukuza #7",
-        Image: "./img/bag.jpg",
+        Image: "./img/coffee4.png",
         Origin: "Burundi",
         Price: 129,
         Descritpion: "A crisp balance between fresh redcurrant acidity and deep honey sweetness is followed by a long finish with notes of rooibos.",
@@ -47,7 +47,7 @@ const PRODUCTCOLLECTION = [
     {   
         Id: "coffee5",
         Name: "Nzove",
-        Image: "./img/bag.jpg",
+        Image: "./img/coffee4.png",
         Origin: "Burundi",
         Price: 139,
         Descritpion: "Characteristic berry jam notes are joined by wild tropical fruit in this naturally processed lot from the Nzove hill.",
@@ -58,7 +58,7 @@ const PRODUCTCOLLECTION = [
     {
         Id: "coffee6",
         Name: "Kiamugumo",
-        Image: "./img/bag.jpg",
+        Image: "./img/coffee4.png",
         Origin: "Kenya",
         Price: 149,
         Descritpion: "Crisp redcurrant is balanced by a caramel sweetness in this fresh and tea-like lot from the Kirinyaga region.",
