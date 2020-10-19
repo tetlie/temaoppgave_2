@@ -1,25 +1,10 @@
 import { PRODUCTCOLLECTION } from "./products.js";
+import { addToGrid } from "./functions.js";
 
-//——————————————————————————————————————— LEGG ARRAY-ELEMENTER I PRODUCT-GRID
+// LEGG ARRAY-ELEMENTER I PRODUCT-GRID
+window.onload = PRODUCTCOLLECTION.forEach(el => addToGrid(el));
 
-PRODUCTCOLLECTION.forEach(el => {
-    document.querySelector("#products-article-grid").innerHTML += `
-    <div id="product-item">
-        <img id="product-image"src="${el.Image}" alt="">
-        <div id="product-info">
-        <h1 id="product-title">${el.Name}</h1>
-        <p id="product-origin">${el.Origin}</p><br>
-        <p id="product-price">${el.Price} NOK</p><br>
-        <p>Notes</p>
-        <p id="product-notes">${el.Notes.Note1} / ${el.Notes.Note2} / ${el.Notes.Note3}</p><br>
-        <p>Brew</p>
-        <p id="product-brew">${el.Brew.Brew1} / ${el.Brew.Brew2} / ${el.Brew.Brew3}</p><br>
-    </div>
-    <button id="${el.Id}" class="buy-button" type="">Buy</button>
-    </div>`
-});
-
-//——————————————————————————————————————— FILTER
+// FILTER
 
 let originAll = [];
 let filteredOrigin = [];
@@ -30,6 +15,7 @@ PRODUCTCOLLECTION.filter(el => {
 filteredOrigin.forEach(el => {
     document.querySelector("#products-filter-origin").innerHTML += `<p class="filter-item">${el}</p>`
 });
+
 //———————————————————————————————————————
 let brewAll = [];
 let filteredBrew = [];
@@ -73,116 +59,80 @@ document.querySelectorAll(".filter-button").forEach(el => el.addEventListener('c
 let FILTERED_COLLECTION = [];
 
 function filterProducts(e) {
+    document.querySelector("#products-article-grid").innerHTML = "";
     PRODUCTCOLLECTION.forEach(el => {
         if (e.innerHTML === el.Origin) {
             FILTERED_COLLECTION.push(el);
         }
     });
+    FILTERED_COLLECTION.forEach(el => addToGrid(el));
 }
 
-//——————————————————————————————————————— ADD TO CART
+//——————————————————————————————————————— HANLEKURV
 
 // Handlekurv-array
 let CART_COLLECTION = [];
-
 // Handlekurv-section
 let cartArticle = document.querySelector("#cart-article");
-let cartNumberOfItems = document.querySelector("#number-of-items")
+let cartButtonNumberOfItems = document.querySelector("#number-of-items")
+let cartNumberOfItems = document.querySelector("#total-product")
+let cartTotalPrice = document.querySelector("#total-sum")
 
-// legg til eventListener(click) for alle knapper med classe .buy-button
-document.querySelectorAll(".buy-button").forEach(el => el.addEventListener('click', addToCart));
-
-// legg til i handlekurv
-function addToCart(e) {
-    // refresh visning av aray
+// UPDATE CART
+function updateCart() {
     cartArticle.innerHTML = "";
-    // refresh antall produkter i header
+    cartTotalPrice.innerHTML = "";
     cartNumberOfItems.innerHTML = "";
-
-    PRODUCTCOLLECTION.forEach(el => {
-        // if knappens id er samme som elementets id
-        // legg til elementet i handlekurv-arrayet
-        if (e.target.id === el.Id) {
-            CART_COLLECTION.push(el)
-        }
-    });
-
+    cartButtonNumberOfItems.innerHTML = "";
+    
     // legg til produktlinjene
     CART_COLLECTION.forEach(el => {
-        // For hvert av elementene i handlekurv-arrayet opprettes en div i handlekuv-sek
         cartArticle.innerHTML += `
         <div id="product-line"><p>${el.Name}
         <p>${el.Price} NOK<p>
         <button id="remove-${el.Id}" class="remove_button" type="">Remove</button></div>`;
-
+        // legg til eventlistener på remove-knapp
         document.querySelectorAll(".remove_button").forEach(el => {
             console.log(el);
             el.addEventListener('click', removeFromCart)
         });
-
     });
-
     // oppdater antall produkter i header
-    cartNumberOfItems.innerHTML = `(${CART_COLLECTION.length})`;
-
-
+    cartButtonNumberOfItems.innerHTML = `(${CART_COLLECTION.length})`;
     // oppdater antall produkter i handlekurv og juster grammatikk etter antall (product/products)
     if (CART_COLLECTION.length === 1) {
-        document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} product`;
+        cartNumberOfItems.innerHTML = `${CART_COLLECTION.length} product`;
     } else {
-        document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} products`;
+        cartNumberOfItems.innerHTML = `${CART_COLLECTION.length} products`;
     }
-
     // oppdater totalpris
-
     let totalPrice = 0;
     CART_COLLECTION.forEach(el => {
         totalPrice += el.Price;
-        document.querySelector("#total-sum").innerHTML = `${totalPrice} NOK`;
+        cartTotalPrice.innerHTML = `${totalPrice} NOK`;
     })
 }
 
-// ——————————————————————————————————————— REMOVE FROM CART
-
-
-
+// ADD TO KART
+document.querySelectorAll(".buy-button").forEach(el => el.addEventListener('click', addToCart));
+function addToCart(e) {
+    PRODUCTCOLLECTION.forEach(el => {
+        if (e.target.id === `add-${el.Id}`) {
+            CART_COLLECTION.push(el)
+        }
+    });
+    updateCart();
+}
+// REMOVE FROM CART
 function removeFromCart(e) {
-    cartArticle.innerHTML = "";
-    document.querySelector("#total-sum").innerHTML = "";
-    document.querySelector("#total-product").innerHTML = "";
+
     CART_COLLECTION.forEach((el, i) => {
         if (e.target.id === `remove-${el.Id}`) {
             CART_COLLECTION.splice(i, 1);
             console.log(CART_COLLECTION);
         }
-
-        
-        console.log(CART_COLLECTION);
-        cartArticle.innerHTML += `
-        <div id="product-line"><p>${el.Name}
-        <p>${el.Price} NOK<p>
-        <button id="remove-${el.Id}" class="remove_button" type="">Remove</button></div>`;
-
-        document.querySelectorAll(".remove_button").forEach(el => {
-            console.log(el);
-            el.addEventListener('click', removeFromCart)
-        });
-
-        cartNumberOfItems.innerHTML = `(${CART_COLLECTION.length})`;
-        if (CART_COLLECTION.length === 1) {
-            document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} product`;
-        } else {
-            document.querySelector("#total-product").innerHTML = `${CART_COLLECTION.length} products`;
-        }
-
-        let totalPrice = 0;
-        CART_COLLECTION.forEach(el => {
-            totalPrice += el.Price;
-            document.querySelector("#total-sum").innerHTML = `${totalPrice} NOK`;
-        })
-
     });
-
+    updateCart();
 }
 
 //———————————————————————————————————————
