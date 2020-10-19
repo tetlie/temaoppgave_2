@@ -8,10 +8,12 @@ PRODUCTCOLLECTION.forEach(el => {
         <img id="product-image"src="${el.Image}" alt="">
         <div id="product-info">
         <h1 id="product-title">${el.Name}</h1>
-        <p id="product-price">${el.Price} NOK</p><br>
         <p id="product-origin">${el.Origin}</p><br>
-        <p id="product-origin">${el.Notes.Note1} / ${el.Notes.Note2} / ${el.Notes.Note3}</p><br>
-        <p id="product-origin">${el.Descritpion}</p><br>
+        <p id="product-price">${el.Price} NOK</p><br>
+        <p>Notes</p>
+        <p id="product-notes">${el.Notes.Note1} / ${el.Notes.Note2} / ${el.Notes.Note3}</p><br>
+        <p>Brew</p>
+        <p id="product-brew">${el.Brew.Brew1} / ${el.Brew.Brew2} / ${el.Brew.Brew3}</p><br>
     </div>
     <button id="${el.Id}" class="buy-button" type="">Buy</button>
     </div>`

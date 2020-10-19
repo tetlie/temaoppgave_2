@@ -66,10 +66,50 @@ const PRODUCTCOLLECTION = [
         Brew: {Brew1: "Espresso", Brew2: "V60", Brew3:"French-press", Brew4: "Aeropress"},
         Roast: "Light",
     },
-
-    // double
-
-    
+    {
+        Id: "coffee7",
+        Name: "El Sapo",
+        Image: "./img/coffee4.png",
+        Origin: "Colombia",
+        Price: 165,
+        Descritpion: "Crisp redcurrant is balanced by a caramel sweetness in this fresh and tea-like lot from the Kirinyaga region.",
+        Notes: {Note1: "Blackberry", Note2: "Sweet Lemon", Note3: "Cherry"},
+        Brew: {Brew1: "Espresso", Brew2: "V60", Brew3:"French-press", Brew4: "Aeropress"},
+        Roast: "Medium",
+    },
+    {
+        Id: "coffee8",
+        Name: "Dingu",
+        Image: "./img/coffee4.png",
+        Origin: "Ethiopia",
+        Price: 152,
+        Descritpion: "A natural coffee well produced and dried on African beds on smaller scale from a single producer. A type of coffee more common in Ethiopia since the liberalisation of the industry.",
+        Notes: {Note1: "Nougat", Note2: "Raisin", Note3: "Molasses"},
+        Brew: {Brew1: "Espresso"},
+        Roast: "Dark",
+    },
+    {
+        Id: "coffee9",
+        Name: "Colima",
+        Image: "./img/coffee4.png",
+        Origin: "Costa Rica",
+        Price: 176,
+        Descritpion: "",
+        Notes: {Note1: "Grapes", Note2: "Caramel", Note3: "Stewed Fruits"},
+        Brew: {Brew1: "Espresso", Brew2: "V60", Brew3:"French-press", Brew4: "Aeropress"},
+        Roast: "Medium",
+    },
+    {
+        Id: "coffee10",
+        Name: "Alfredo Baos",
+        Image: "./img/coffee4.png",
+        Origin: "Colombia",
+        Price: 165,
+        Descritpion: "",
+        Notes: {Note1: "Rasberry", Note2: "Mandarine", Note3: "Brown Sugar"},
+        Brew: {Brew2: "V60", Brew3:"French-press", Brew4: "Aeropress"},
+        Roast: "Medium",
+    },
 ];
 
 

@@ -155,6 +155,7 @@ button:active {
 
 #filter-header {
   cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 .filter-item {
@@ -197,12 +198,14 @@ button:active {
 }
 
 #products-article-grid {
-  padding: 2rem;
+  padding: 3rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: minmax(100px);
-  grid-gap: 2rem;
+  grid-gap: 3rem;
+  background-color: #CCE3FF;
+
 }
 
 
@@ -212,8 +215,8 @@ button:active {
   gap: 2rem;
   flex-direction: column;
   padding: 2rem;
-  background-color: #CCE3FF;
   transition: 0.5s;
+  background-color: white;
 }
 
 #product-item:hover {
