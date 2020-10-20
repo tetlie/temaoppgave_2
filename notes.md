@@ -24,3 +24,6 @@ her kan hvert av elementene få nye unike id-er og fjern-knapper
 // find (el = el) og splice el[i,1]
 
 // lage funksjoner som kan brukes igjen
+
+
+// gjøre objekter om til arrays

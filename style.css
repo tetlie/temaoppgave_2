@@ -10,6 +10,10 @@ html {
   letter-spacing: normal;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 body {
   font-size: 2rem;
 }
@@ -18,22 +22,18 @@ main {
   margin-top: 8rem;
 }
 
-#products-section-title {
-  min-height: 30vh;
-  font-size: 5rem;
-}
-
 a {
   text-decoration: none;
   color: black;
 }
 
-#announcement {
-  background-color: #CCE3FF;
-  padding: 0.25rem;
+#header__navigation {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
 }
+
 
 header {
   background-color: white;
@@ -41,6 +41,18 @@ header {
   position: fixed;
   top: 0;
   z-index: 100;
+  border-bottom: 1px solid black;
+}
+
+#header__button__cart {
+  min-width: 7.5vw;
+}
+
+#header__announcement {
+  background-color: #CCE3FF;
+  padding: 0.25rem;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
@@ -59,13 +71,6 @@ header {
   transform: scale(1.1);
 }
 
-#header {
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-  align-items: center;
-}
-
 button {
   font-size: 1.5rem;
   cursor: pointer;
@@ -77,6 +82,12 @@ button {
   transition: 0.5s;
 }
 
+.button__remove {
+  background-color: inherit;
+  border: solid 1px black;
+  color: black;
+}
+
 button:hover {
   transform: scale(1.05);
 }
@@ -85,29 +96,25 @@ button:active {
   transform: scale(0.9);
 }
 
-.buy-button {
+.button__add {
   justify-self: flex-end;
 }
 
-#cart-button {
-  min-width: 7.5vw;
-}
-
-#cart-section {
+#cart {
   display: none;
   width: 100%;
   padding: 2rem;
   min-height: 30vh;
-  background-color: #CCE3FF;
+  background-color: lightgray;
   transition: 1s;
 }
 
-#cart-article {
+#cart__products {
   margin-top: 2rem;
   width: 100%;
 }
 
-#product-line, #total-line {
+#product-line, #cart__total {
   padding: 1rem 4rem;
   justify-content: space-between;
   align-items: center;
@@ -116,17 +123,18 @@ button:active {
   border-top: black 1px solid;
 }
 
-#total-line {
+#cart__total {
   margin-top: 2rem;
   margin-bottom: 2rem;
   font-weight: 900;
   transition: 0.5s;
 }
 
-#banner-section {
+#banner {
   padding: 2rem;
   display: flex;
-  justify-content: left;
+  flex-direction: column;
+  justify-content: center;
   align-items: start;
   min-height: 60vh;
   background-color: lightgray;
@@ -140,7 +148,7 @@ button:active {
   justify-content: space-between;
 }
 
-#products-section {
+#products {
   display: flex;
   flex-direction: column;
   justify-content: left;
@@ -149,7 +157,8 @@ button:active {
   width: 100%;
 }
 
-#products-header {
+#products__header {
+  margin-top: 2rem;
   padding: 2rem;
 }
 
@@ -160,12 +169,12 @@ button:active {
   min-height: 30vh;
 }
 
-#filter-header {
+#filter__header {
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
-.filter-item {
+.filter__item {
   cursor: pointer;
   border-top: black 1px solid;
   display: flex;
@@ -175,45 +184,25 @@ button:active {
   transition: 0.5s;
 }
 
-.filter-item:hover {
+.filter__item:hover {
   transform: scale(1.05);
 }
 
-#products-article-filter {
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  align-items: center;
-  width: 100%;
-}
-
-#filter {
-  display: none;
-  padding: 2rem;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-auto-rows: minmax(100px);
-  grid-gap: 2rem;
-}
-
-#products-filter-origin, #products-filter-brew, #products-filter-roast, #products-filter-notes {
+#filter--origin, #filter--brew, #filter--roast, #filter--notes {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding: 2rem;
 }
 
-#products-article-grid {
+#products__filter {
   padding: 3rem;
   width: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: minmax(100px);
   grid-gap: 3rem;
-  background-color: #CCE3FF;
 }
-
 
 #product-item {
   font-size: 1.5rem;
@@ -223,6 +212,8 @@ button:active {
   padding: 2rem;
   transition: 0.5s;
   background-color: white;
+  border: 1px solid black;
+  border-radius: 1rem;
 }
 
 #product-item:hover {
@@ -238,8 +229,9 @@ button:active {
 footer {
   padding: 2rem;
   display: flex;
-  justify-content: left;
-  align-items: center;
-  min-height: 30vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  min-height: 60vh;
   background-color: lightgray;
 }
