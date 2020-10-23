@@ -28,7 +28,7 @@ document.querySelector('#filter--notes').innerHTML += `
 // origin
 let mappedOrigin = PRODUCTCOLLECTION.map(el => el.Origin); 
 mappedOrigin = mappedOrigin.filter((el, i, ar) => ar.indexOf(el) === i);
-mappedOrigin.forEach(el => {document.querySelector('#filter--origin').innerHTML += `<p class='filter__item origin' id='Orgin'>${el}</p>`});
+mappedOrigin.forEach(el => {document.querySelector('#filter--origin').innerHTML += `<p class='filter__item origin'>${el}</p>`});
 
 // roast
 let mappedRoast = PRODUCTCOLLECTION.map(el => el.Roast); 

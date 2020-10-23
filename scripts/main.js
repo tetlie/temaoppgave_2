@@ -50,7 +50,7 @@ function updateHTMLCart() {
 // Legg til i handlekurv
 document.querySelectorAll('.button__add').forEach(el => el.addEventListener('click', addToCart));
 function addToCart(e) {
-    PRODUCTCOLLECTION.forEach(el => {
+    PRODUCTCOLLECTION.find(el => {
         if (e.target.id === `add-${el.Id}`) {
             CART_COLLECTION.push(el)
         }
