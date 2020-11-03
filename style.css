@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -57,7 +58,7 @@ header {
 
 .logo {
   border: 1px solid black;
-  padding: 1rem;
+  padding: 1em;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -78,7 +79,7 @@ button {
   background-color: black;
   border-radius: 0.5rem;
   border: none;
-  padding: 1rem;
+  padding: 1em;
   transition: 0.5s;
 }
 
@@ -162,7 +163,7 @@ button:active {
   padding: 2rem;
 }
 
-#products-article {
+#products {
   flex-direction: column;
   justify-content: left;
   align-items: center;
@@ -195,7 +196,7 @@ button:active {
   padding: 2rem;
 }
 
-#products__filter {
+#products__grid, #products__filter {
   padding: 3rem;
   width: 100%;
   display: grid;

@@ -1,6 +1,5 @@
-# Refleksjonsnotat
-## Tema 2 — Grunnleggende JavaScript
-### Marius Tetlie
+# Tema 2 (Grunnleggende JavaScript)
+## Refleksjonsnotat — Marius Tetlie
 
 Til denne oppgaven har jeg laget en enkel nettbutikk for salg av kaffe. Siden er enkelt utformet, med et layout som er formet for å være intuitiv for brukeren. Når det gjelder universell utforming har jeg satt og brukt og `rem` for å definere fontstørrelser og ikke brukt mer enn én `h1` for hver div. Jeg har også lagt til animasjoner som aktiveres når brukeren hover over og klikker knapper og andre elementer som kan trykkes på. For responsivitet har jeg brukt auto-fit i grid-oppsettet, i tillegg til å bruke `rem` og `vh`/`vw` på størrelsesforhold.
 

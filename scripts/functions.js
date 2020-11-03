@@ -1,5 +1,5 @@
 export function addToGrid(product) {
-    document.querySelector('#products__filter').innerHTML += `
+    document.querySelector('#products__grid').innerHTML += `
     <div id='product-item'>
         <img id='product-image'src='${product.Image}' alt=''>
         <div id='product-info'>
@@ -56,7 +56,7 @@ document.querySelectorAll('.brew').forEach(el => el.addEventListener('click', fi
 document.querySelectorAll('.price').forEach(el => el.addEventListener('click', filterProductsPrice));
 
 function filterProductsOrigin(e) {
-    document.querySelector('#products__filter').innerHTML = '';
+    document.querySelector('#products__grid').innerHTML = '';
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return el.Origin == e.target.innerHTML;
     }); 
@@ -64,7 +64,7 @@ function filterProductsOrigin(e) {
 }
 
 function filterProductsRoast(e) {
-    document.querySelector('#products__filter').innerHTML = '';
+    document.querySelector('#products__grid').innerHTML = '';
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return el.Roast == e.target.innerHTML;
     }); 
@@ -72,7 +72,7 @@ function filterProductsRoast(e) {
 }
 
 function filterProductsBrew(e) {
-    document.querySelector('#products__filter').innerHTML = '';
+    document.querySelector('#products__grid').innerHTML = '';
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return el.Brew.Brew1 == e.target.innerHTML || el.Brew.Brew2 == e.target.innerHTML || el.Brew.Brew3 == e.target.innerHTML || el.Brew.Brew4 == e.target.innerHTML;
     }); 
@@ -80,7 +80,7 @@ function filterProductsBrew(e) {
 }
 
 function filterProductsPrice(e) {
-    document.querySelector('#products__filter').innerHTML = '';
+    document.querySelector('#products__grid').innerHTML = '';
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return Number(el.Price) <= Number(e.target.id);
     }); 
