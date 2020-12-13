@@ -1,64 +1,51 @@
 <!DOCTYPE html>
 <html lang='en'>
-
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Roasters</title>
-    <link rel='stylesheet' href='./style.css'>
-    <script src='./scripts/main.js' type='module'></script>
-</head>
-
-<body>
-
-
-    <header>
-
-        <section id='header__announcement'>
-            <p>Expect some delays in delivery-time</a>
-        </section>
-
-        <nav id='header__navigation'>
-            <a class='logo' href='index.html'>R</a>
-            <button id='header__button__cart'>CART<span id='header__button__cart__count'></span></button>
-        </nav>
-
-        <section id='cart'>
-            <p>Cart</p>
-            <article id='cart__products'></article>
-            <p>Total</p>
-            <div id='cart__total'><p id='total__products'></p><p id='total__price'><p><button class='button__checkout' type='submit'>Checkout</button>
-            </div>
-        </section>
-
-    </header>
-
-    <main>
-
-        <section id='banner'>
-            <h1>Roasters</h1>
-            <p>Sourcing the finest</p>
-        </section>
-
-        <section id='products'>
-            <h1 id='products__header'>Products</h1>
-            <article id='products__filter'>
-                    <div id='filter--origin'><h1>Origin</h1></div>
-                    <div id='filter--brew'><h1>Brew</h1></div>
-                    <div id='filter--roast'><h1>Roast</h1></div>
-                    <div id='filter--notes'><h1>Price</h1></div>
-            </article>
-            <article id='products__grid'></article>
-        </section>
-
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Roasters</title>
+        <link rel='stylesheet' href='./style.css'>
+        <script src='./scripts/main.js' type='module'></script>
+    </head>
+    <body>
+        <header>
+            <section id='header__announcement'>
+                <p>Expect some delays in delivery-time</a>
+            </section>
+            <nav id='header__navigation'>
+                <a class='logo' href='index.html'>R</a>
+                <button id='header__button__cart'>CART<span id='header__button__cart__count'></span></button>
+            </nav>
+            <section id='cart'>
+                <p>Cart</p>
+                <ul id='cart__products'></ul>
+                <p>Total</p>
+                <div id='cart__total'>
+                    <p id='total__products'></p>
+                    <p id='total__price'>
+                    <p><button class='button__checkout' type='submit'>Checkout</button>
+                </div>
+            </section>
+        </header>
+        <main>
+            <section id='banner'>
+                <h1>Roasters</h1>
+            </section>
+            <section id='products'>
+                <h2 id='products__header'>Products</h2>
+                <article id='products__filter'>
+                    <ul id='filter--origin'><h3>Origin</h3></ul>
+                    <ul id='filter--brew'><h3>Brew</h3></ul>
+                    <ul id='filter--roast'><h3>Roast</h3></ul>
+                    <ul id='filter--notes'><h3>Price</h3></ul>
+                </article>
+                <article id='products__grid'></article>
+            </section>
+        </main>
         <footer>
-                <div class='logo'>R</div>
-                <p>roasters</p>
-                <p>what we believe in and some contact info</p>
+            <div class='logo'>R</div>
+            <h2>roasters</h2>
+            <p>what we believe in and some contact info</p>
         </footer>
-
-    </main>
-
-</body>
-
+    </body>
 </html>

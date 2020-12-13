@@ -1,9 +1,9 @@
 export function addToGrid(product) {
     document.querySelector('#products__grid').innerHTML += `
-    <div id='product-item'>
-        <img id='product-image'src='${product.Image}' alt=''>
+    <article id='product-item'>
+        <img id='product-image'src='${product.Image}' alt='${product.Name} coffee-bag'>
         <div id='product-info'>
-        <h1 id='product-title'>${product.Name}</h1>
+        <h3 id='product-title'>${product.Name}</h3>
         <p id='product-origin'>${product.Origin}</p><br>
         <p id='product-price'>${product.Price} NOK</p><br>
         <p>Notes</p>
@@ -12,7 +12,7 @@ export function addToGrid(product) {
         <p id='product-brew'>${product.Brew.Brew1} / ${product.Brew.Brew2}</p><br>
     </div>
     <button id='add-${product.Id}' class='button__add' type=''>Add to cart</button>
-    </div>`;
+    </article>`;
 }
 
 // LAGE FILTERLISTER
@@ -21,19 +21,19 @@ import { PRODUCTCOLLECTION } from './products.js';
 
 // price
 document.querySelector('#filter--notes').innerHTML += `
-<p class='filter__item price' id='125'>Under 125 NOK</p>
-<p class='filter__item price' id='150'>Under 150 NOK</p>
-<p class='filter__item price' id='175'>Under 175 NOK</p>`;
+<li class='filter__item price' id='125'>Under 125 NOK</li>
+<li class='filter__item price' id='150'>Under 150 NOK</li>
+<li class='filter__item price' id='175'>Under 175 NOK</li>`;
 
 // origin
 let mappedOrigin = PRODUCTCOLLECTION.map(el => el.Origin); 
 mappedOrigin = mappedOrigin.filter((el, i, ar) => ar.indexOf(el) === i);
-mappedOrigin.forEach(el => {document.querySelector('#filter--origin').innerHTML += `<p class='filter__item origin'>${el}</p>`});
+mappedOrigin.map(el => {document.querySelector('#filter--origin').innerHTML += `<li class='filter__item origin'>${el}</li>`});
 
 // roast
 let mappedRoast = PRODUCTCOLLECTION.map(el => el.Roast); 
 mappedRoast = mappedRoast.filter((el, i, ar) => ar.indexOf(el) === i);
-mappedRoast.forEach(el => {document.querySelector('#filter--roast').innerHTML += `<p class='filter__item roast'>${el}</p>`});
+mappedRoast.map(el => {document.querySelector('#filter--roast').innerHTML += `<li class='filter__item roast'>${el}</li>`});
 
 // Brew
 let brewAll = [];
@@ -45,7 +45,7 @@ PRODUCTCOLLECTION.filter(el => {
     if (el.Brew.Brew4 !== undefined) { brewAll.push(el.Brew.Brew4); };
     filteredBrew = brewAll.filter((el, i, ar) => ar.indexOf(el) === i);
 });
-filteredBrew.forEach(el => {document.querySelector('#filter--brew').innerHTML += `<p class='filter__item brew'>${el}</p>`});
+filteredBrew.map(el => {document.querySelector('#filter--brew').innerHTML += `<li class='filter__item brew'>${el}</li>`});
 
 
 //  KLIKKE PÅ FILTERET
@@ -60,7 +60,7 @@ function filterProductsOrigin(e) {
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return el.Origin == e.target.innerHTML;
     }); 
-    filteredItems.forEach(el => addToGrid(el));
+    filteredItems.map(el => addToGrid(el));
 }
 
 function filterProductsRoast(e) {
@@ -68,7 +68,7 @@ function filterProductsRoast(e) {
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return el.Roast == e.target.innerHTML;
     }); 
-    filteredItems.forEach(el => addToGrid(el));
+    filteredItems.map(el => addToGrid(el));
 }
 
 function filterProductsBrew(e) {
@@ -76,7 +76,7 @@ function filterProductsBrew(e) {
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return el.Brew.Brew1 == e.target.innerHTML || el.Brew.Brew2 == e.target.innerHTML || el.Brew.Brew3 == e.target.innerHTML || el.Brew.Brew4 == e.target.innerHTML;
     }); 
-    filteredItems.forEach(el => addToGrid(el));
+    filteredItems.map(el => addToGrid(el));
 }
 
 function filterProductsPrice(e) {
@@ -84,5 +84,5 @@ function filterProductsPrice(e) {
     let filteredItems = PRODUCTCOLLECTION.filter(el => {
         return Number(el.Price) <= Number(e.target.id);
     }); 
-    filteredItems.forEach(el => addToGrid(el));
+    filteredItems.map(el => addToGrid(el));
 }

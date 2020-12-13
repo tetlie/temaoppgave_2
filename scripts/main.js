@@ -2,7 +2,7 @@ import { PRODUCTCOLLECTION } from './products.js';
 import { addToGrid } from './functions.js';
 
 // Legg til produkter i produkt-griden når siden lastes
-window.onload = PRODUCTCOLLECTION.forEach(el => addToGrid(el));
+window.onload = PRODUCTCOLLECTION.map(el => addToGrid(el));
 
 // Handlekurv-array
 let CART_COLLECTION = [];
@@ -22,11 +22,11 @@ function updateHTMLCart() {
     cartButtonNumberOfItems.innerHTML = '';
     
     // Legg til produktlinjene i handlekurv
-    CART_COLLECTION.forEach(product => {
+    CART_COLLECTION.map(product => {
         cartArticle.innerHTML += `
-        <div id='product-line'><p>${product.Name}
+        <li id='product-line'><p>${product.Name}
         <p>${product.Price} NOK<p>
-        <button id='remove-${product.Id}' class='button__remove'>Remove</button></div>`;
+        <button id='remove-${product.Id}' class='button__remove'>Remove</button></li>`;
         // Legg til eventlistener på fjern-knapp
         document.querySelectorAll('.button__remove').forEach(el => {el.addEventListener('click', removeFromCart)});
     });
